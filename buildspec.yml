@@ -1,0 +1,21 @@
+version: 0.2
+phases:
+  install:
+        commands:
+                  - echo CODEBUILD_SRC_DIR - $CODEBUILD_SRC_DIR
+                            - echo GOPATH - $GOPATH
+                                      - echo GOROOT - $GOROOT
+        build:
+              commands:
+                        - echo Build started on `date`
+                                  - echo Getting packages
+                                            - go get ./...
+                                                      - echo Compiling the Go code
+                                                                - cd; go build -o main
+              post_build:
+                    commands:
+                              - echo Build completed on `date`
+                    artifacts:
+                          files:
+                                    - "/main"
+
